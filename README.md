@@ -72,5 +72,8 @@ Relationship: One-to-Many (1:N)
 
 "For example, if LAP001 is initially assigned to Rahul and later Rahul returns it, the same laptop can be assigned to another employee.
 
+`End flow`
+
+"Once the required onboarding activities, including asset allocation, are completed, we mark the onboarding request as Completed and update the employee status to Active."
 
 

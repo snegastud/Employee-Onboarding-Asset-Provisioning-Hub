@@ -45,3 +45,32 @@ Employee = ACTIVE
 >If the manager approves it, the request moves to the asset management part. The IT team checks the available assets and assigns the required assets, like a laptop or ID card, to that employee. We store each assignment in the Asset Allocation table and update the asset status to Allocated.
 
 >Once all the required assets are assigned, we complete the onboarding request and update the employee status from Onboarding to Active. So basically, the flow is HR creates the employee, manager approves the onboarding, IT allocates the assets, and finally the employee becomes Active."
+
+**Relationship design**
+
+ `Employees → OnboardingRequest`
+
+>Relationship: One-to-One (1:1)
+
+>One employee has one onboarding request in your current business design.
+
+`Employees → AssetAllocations`
+
+>Relationship:one to many(1:N)
+
+>One employee can receive multiple assets.
+
+`"For example`, Rahul may receive a laptop, monitor, and ID card. Each of those assignments is stored as a separate asset allocation record. So one employee can have multiple asset allocation records."
+
+`Assets → AssetAllocations`
+
+Relationship: One-to-Many (1:N)
+
+>"The Assets entity stores the company's asset master data, such as laptops, monitors, and ID cards. AssetAllocation stores which asset was assigned to which employee. One asset can have multiple allocation records over its lifetime because it can be returned and later assigned to another employee."
+
+`For example`
+
+"For example, if LAP001 is initially assigned to Rahul and later Rahul returns it, the same laptop can be assigned to another employee.
+
+
+

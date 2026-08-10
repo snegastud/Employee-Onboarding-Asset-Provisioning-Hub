@@ -74,6 +74,6 @@ Relationship: One-to-Many (1:N)
 
 `End flow`
 
-"Once the required onboarding activities, including asset allocation, are completed, we mark the onboarding request as Completed and update the employee status to Active."
+>"Once the required onboarding activities, including asset allocation, are completed, we mark the onboarding request as Completed and update the employee status to Active."
 
 

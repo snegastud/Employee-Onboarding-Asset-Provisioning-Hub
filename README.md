@@ -76,4 +76,121 @@ Relationship: One-to-Many (1:N)
 
 >"Once the required onboarding activities, including asset allocation, are completed, we mark the onboarding request as Completed and update the employee status to Active."
 
+`Project flow`
+
+```
+
+                 EMPLOYEE ONBOARDING
+                           │
+                           ▼
+                     HR creates
+                      Employee
+                           │
+                           ▼
+                Employee Status
+                   = ONBOARDING
+                           │
+                           ▼
+                 Create Onboarding
+                      Request
+                           │
+                           ▼
+                Request Status
+                   = PENDING
+                           │
+                           ▼
+                    Manager Review
+                     /           \
+                    /             \
+               APPROVE           REJECT
+                  │                 │
+                  ▼                 ▼
+              APPROVED           REJECTED
+                  │
+                  ▼
+             ASSET MANAGEMENT
+                  │
+                  ▼
+             IT checks Assets
+                  │
+                  ▼
+        Is Asset AVAILABLE?
+             /           \
+           Yes            No
+            │              │
+            ▼              ▼
+      Allocate Asset    Choose another
+            │
+            ▼
+     Create AssetAllocation
+            │
+            ▼
+    Asset Status = ALLOCATED
+            │
+            ▼
+   Are all required assets
+         allocated?
+        /          \
+      No            Yes
+      │              │
+      │              ▼
+      │       Complete Onboarding
+      │              │
+      │              ▼
+      │       Request = COMPLETED
+      │              │
+      │              ▼
+      │       Employee = ACTIVE
+      │
+      └── IT continues allocation
+
+```
+
+**Two modules working process**
+
+>"I worked mainly on two modules, Employee Onboarding and Asset Management. The onboarding module controls the employee's onboarding request and approval process. Once the request is approved, it moves into the asset management part, where IT assigns the required assets to the employee."
+
+"**What business problem were you solving in your project?**"
+
+>"The main problem was that employee onboarding was being handled manually between HR, managers, and the IT team. When a new employee joined, HR had to share the employee details with the concerned teams, the manager had to approve the onboarding, and then IT had to arrange assets like laptops and ID cards.
+
+>Because these activities were handled separately, it was difficult to track the current status. Sometimes approvals were delayed, and IT also had to manually check whether the required assets were available.
+
+>So we developed an Employee Onboarding and Asset Provisioning application where we brought these activities into one application. HR can create the employee and onboarding request, the manager can approve or reject it, and once approved, IT can see the available assets and allocate them to the employee.
+
+>The application maintains the complete status of the onboarding process, so HR and IT can see whether the request is pending, approved, assets are allocated, or onboarding is completed."
+
+**Problems**
+• Manual coordination
+• Approval delays
+• Difficult to track status
+• Asset availability not centralized
+• No single place to see onboarding progress
+
+**"How did you implement this?"**
+
+>"We implemented the application using SAP CAP with Node.js on SAP BTP. I started with the CDS data model for employees, onboarding requests, assets, and asset allocations.
+
+>Then I exposed those entities through OData V4 services. On top of that, I implemented the business validations and workflow logic in CAP service handlers. For example, before creating an onboarding request, we validate the employee and check for duplicate requests. For approval and asset allocation, we implemented business actions to control the status changes and asset availability.
+
+>We developed the user interface using SAP Fiori/UI5. Different users have different responsibilities, so we used XSUAA for authentication and role-based authorization.
+
+>We also used Application Logging for application and business activity logs, and Alert Notification for important events such as pending or delayed activities. Finally, we deployed the application to BTP Cloud Foundry using MTA."
+
+
+**"Explain the project end to end."**
+
+>"The application starts with HR creating an employee and an onboarding request. The employee is initially maintained with an onboarding status, and the request is created in pending status.
+
+>Before saving the request, we validate the employee details and make sure there isn't already an active onboarding request for that employee.
+
+>Once the request is submitted, the manager reviews it from the Fiori application. If the manager approves it, the request moves to the asset provisioning stage. If it's rejected, we maintain the rejection status and remarks.
+
+>For an approved request, the IT team checks the available assets. When they allocate an asset, we create an asset allocation record and change the asset status from available to allocated.
+
+>Once all the required assets are assigned, the onboarding request is completed and the employee status is changed from onboarding to active.
+
+>Throughout the process, we maintain the relevant application logs and notifications, so the business users can track what happened and the IT team can react to pending activities."
+
+
 

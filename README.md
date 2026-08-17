@@ -192,5 +192,29 @@ Relationship: One-to-Many (1:N)
 
 >Throughout the process, we maintain the relevant application logs and notifications, so the business users can track what happened and the IT team can react to pending activities."
 
+**Employee onboarding creation workflow**
+
+```
+HR
+ ↓
+Create Employee
+ ↓
+BEFORE CREATE
+ ├─ Validate mandatory fields
+ ├─ Check duplicate employee
+ └─ Set status = ONBOARDING
+ ↓
+Employee created
+ ↓
+AFTER CREATE
+ ↓
+OnboardingRequest automatically created
+ ├─ Employee = newly created employee
+ ├─ RequestDate = current date
+ ├─ Status = PENDING
+ └─ ManagerRemarks = NULL
+
+```
+
 
 

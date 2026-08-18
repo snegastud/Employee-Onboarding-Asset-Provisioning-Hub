@@ -281,15 +281,23 @@ Allocation status → ALLOCATED
 **Return allocation workflow**
 
 ```
-AssetAllocation
-      ↓
-Check allocation exists
-      ↓
-Check status = ALLOCATED
-      ↓
-Allocation → RETURNED
-      ↓
-Asset → AVAILABLE
+Employee
+   ↓
+OnboardingRequest
+   ↓
+Manager APPROVED
+   ↓
+Asset Allocation
+   ↓
+Asset AVAILABLE → ALLOCATED
+   ↓
+       NEXT
+   ↓
+Return Asset
+   ↓
+Allocation ALLOCATED → RETURNED
+   ↓
+Asset ALLOCATED → AVAILABLE
 
 ```
 

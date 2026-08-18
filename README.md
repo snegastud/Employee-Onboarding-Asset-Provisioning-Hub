@@ -215,6 +215,82 @@ OnboardingRequest automatically created
  └─ ManagerRemarks = NULL
 
 ```
+**Manager workflow**
 
+```
+
+HR creates Employee
+        ↓
+BEFORE CREATE
+Validate employee
+        ↓
+Employee created
+        ↓
+AFTER CREATE
+Automatically create OnboardingRequest
+        ↓
+Status = PENDING
+ManagerRemarks = NULL
+        ↓
+Manager reviews
+        ↓
+   ┌─────────────┐
+   │             │
+Approve       Reject
+   │             │
+   ↓             ↓
+Remark         Reason
+required       required
+   │             │
+   ↓             ↓
+APPROVED      REJECTED
+
+```
+
+**Next process: Asset Allocation**
+
+```
+OnboardingRequest
+      ↓
+Status = APPROVED
+      ↓
+IT checks Assets
+      ↓
+Find asset with availabilityStatus = AVAILABLE
+      ↓
+Create AssetAllocation
+      ↓
+Asset status → ALLOCATED
+      ↓
+Allocation status → ALLOCATED
+
+```
+
+`validations:`
+
+1.Does the onboarding request exist?
+2.Is the request APPROVED?
+3.Does the employee exist?
+4.Does the asset exist?
+5.Is the asset actually AVAILABLE?
+6.Is the asset already allocated to this employee?
+7.If everything is valid → create allocation.
+8.Update asset status to ALLOCATED.
+
+
+**Return allocation workflow**
+
+```
+AssetAllocation
+      ↓
+Check allocation exists
+      ↓
+Check status = ALLOCATED
+      ↓
+Allocation → RETURNED
+      ↓
+Asset → AVAILABLE
+
+```
 
 

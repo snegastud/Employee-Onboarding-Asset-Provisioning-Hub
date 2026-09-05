@@ -11,6 +11,15 @@ I have hands-on experience with key SAP BTP services such as SAP HANA Cloud, XSU
 I have worked on developing and deploying SAP BTP applications and implementing business requirements using CAP and Node.js. Overall, my experience is mainly focused on SAP BTP, CAP, Node.js, and Fiori application development.
 
 
+**Explain the project**
+
+>“Currently, I’m working on an Employee Onboarding and Asset Provisioning application. The main purpose of the application is to simplify the onboarding process between HR, managers, and IT.
+
+>Basically, HR creates the employee and an onboarding request. The manager reviews and approves the request, and after approval, the IT team allocates the required assets such as laptops or ID cards. Once the required assets are allocated, the onboarding is completed and the employee becomes active.
+
+>From the technical side, we developed this application using SAP CAP with Node.js. I worked mainly on the CDS data model, CAP services, business logic and validations, and the Fiori application. We used SAP HANA Cloud as the database and deployed the application on SAP BTP Cloud Foundry.”
+
+
 **Business flow**
 
 ```

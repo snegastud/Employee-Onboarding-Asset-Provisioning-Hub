@@ -461,4 +461,176 @@ AVAILABLE → ALLOCATED
 | **Authorization errors**    | 401/403, missing scopes/roles                              |
 | **UI/browser console**      | Fiori/UI5 JavaScript or OData errors                       |
 
+**Local / Development — Debugging with Breakpoints**
+
+`step we were followed`
+
+```
+Step 1 — Start your CAP application
+
+In your CAP project:
+
+cds watch
+
+Your CAP service starts locally.
+
+For example:
+
+http://localhost:4004
+Step 2 — Find the service handler
+
+Suppose your logic is in:
+
+srv/
+   onboarding-service.js
+
+You may have something like:
+
+this.on('create', 'AssetAllocations', async (req) => {
+
+    // business logic
+
+});
+Step 3 — Put a breakpoint
+
+Open the project in VS Code.
+
+Put a breakpoint on the line where you want execution to stop.
+
+For example:
+
+this.on('create', 'AssetAllocations', async (req) => {
+
+    const assetId = req.data.asset_ID;  // ← breakpoint
+
+});
+Step 4 — Start the Node.js debugger
+
+You can start your CAP application in debug mode, for example:
+
+cds watch --inspect
+
+Then attach the VS Code debugger to the Node.js process.
+
+Step 5 — Trigger the request
+
+Now open your Fiori application and perform the actual operation:
+
+Employee → Select Asset → Allocate
+
+The Fiori application sends an OData request to your CAP backend.
+
+The debugger should stop at your breakpoint.
+
+Step 6 — Inspect the data
+
+Now you can inspect values such as:
+
+req.data.employeeAsset_ID
+req.data.asset_ID
+req.data.allocationStatus
+
+You can also step through the code using:
+
+Step Over → execute the next line
+Step Into → enter a function
+Step Out → come back from a function
+Continue → continue execution
+Step 7 — Find the actual problem
+
+For example, you might discover:
+
+```
+
+**QA / Production — You normally don't use breakpoints**
+
+For a deployed application, you generally investigate using:
+
+`Application logs + API response + request details`
+
+**command**
+
+cf log application name --recent
+
+real world process in production:
+
+```
+PRODUCTION ISSUE
+       ↓
+User/QA reports issue
+       ↓
+Collect request details
+(Employee / Request / Asset / Time)
+       ↓
+Check production logs
+       ↓
+Identify error/root cause area
+       ↓
+Identify production build / Git commit
+       ↓
+Check corresponding code
+       ↓
+Recreate equivalent test data
+       ↓
+Reproduce in DEV
+       ↓
+Use debugger/breakpoints
+       ↓
+Find root cause
+       ↓
+Fix code
+       ↓
+Test
+       ↓
+Code Review
+       ↓
+Deploy to QA
+       ↓
+QA verifies
+       ↓
+Production release
+
+```
+
+Now imagine the issue is a code problem
+
+Suppose production logs show:
+
+Error while creating AssetAllocation
+Cannot read properties of undefined
+
+You identify:
+
+Production
+   ↓
+Build 245
+   ↓
+Git commit abc123
+   ↓
+Service handler
+   ↓
+Problematic code
+
+You check that code version in your development environment.
+
+Then you reproduce the same business scenario using test data.
+
+For example:
+
+Create onboarding request
+        ↓
+Approve request
+        ↓
+Select asset
+        ↓
+Allocate asset
+        ↓
+Error occurs
+
+Then you put a breakpoint in the CAP handler and inspect the variables.
+
+
+**“How did you handle production issues?”**
+
+>“Usually the issue came through the support or incident-management process. The support team would create an incident with details such as the application, error message, affected functionality and time of occurrence, and the incident would be assigned to our development team. Once it was assigned to me, I first understood the issue and tried to reproduce it. For production-specific investigation, depending on our access, I checked the application logs in the production Cloud Foundry environment and identified the relevant error and application version. I then reproduced the same scenario in the development environment using test data, debugged the CAP service with breakpoints, fixed the issue, and moved the change through code review and QA before production deployment.”
 

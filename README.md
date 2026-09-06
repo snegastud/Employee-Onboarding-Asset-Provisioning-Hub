@@ -312,4 +312,117 @@ Asset ALLOCATED → AVAILABLE
 
 ```
 
+**Interview answer for project related:**
+
+>“It was a new application development project, but I joined the project after the initial development had already started. The team had already set up the basic application structure and some of the initial development. After I joined, I was mainly involved in developing two modules — Employee Onboarding and Asset Management.”
+
+**"How many members were in your project?"**
+
+>“We had around 6 members in the team. We divided the development based on modules, and I was mainly responsible for Employee Onboarding and Asset Management.”
+
+**"How many modules did you build?"**
+
+>“The application had multiple areas, but my main involvement was in two modules — Employee Onboarding and Asset Management.”
+
+**So what did you do after joining?**
+
+>“When I joined, the basic application structure was already there. I first understood the existing CDS model and service structure, and then I started working on the Employee Onboarding and Asset Management modules. I worked on the entities, OData services, business validations, actions and the related Fiori screens.”
+
+**“Are you integrating with S/4HANA in this project?”**
+
+>“No, S/4HANA is not directly involved in the core onboarding and asset management flow I worked on. My work was mainly on the CAP application and its own HANA Cloud data model.”
+
+**“What was your role?”**
+
+>“I was mainly responsible for the Employee Onboarding and Asset Management modules. I worked on the CAP backend, business logic and validations, OData services, and the related Fiori/UI5 screens.”
+
+**Project duration**
+
+>“The project started around early 2025, and I joined around May 2025. By the time I joined, the initial setup and some development were already completed. I then worked mainly on the Employee Onboarding and Asset Management m
+
+**“Why did you join the project in between?”**
+
+>“The project had already started, and one of the team members who was working on that area left the organization. So my team lead assigned that work to me. I took over the existing work, understood the application and the existing code, and then continued the development of the Employee Onboarding and Asset Management modules.
+
+**“So did you build those modules from scratch?”**
+
+>“The overall project was already in development when I joined. For my assigned modules, I took over the existing work and continued the development. I worked on the required functionality, business logic, validations and UI changes based on the requirements.
+
+**“Why did your lead choose you?**
+
+>“At that point, I had experience with SAP CAP and Node.js, so my lead assigned the work to me. I was already familiar with the technology stack, so I could take over the existing implementation and continue the development.”
+
+
+**“What Fiori screens did you work on?”**
+
+>“On the Fiori side, we mainly had screens for onboarding request management, onboarding approval, asset management, and asset allocation. HR could manage the onboarding information, managers could approve or reject requests, and IT could view and allocate available assets.”
+
+**Fiori applications**
+
+```
+Your Fiori application — keep these 4 screens
+
+1. Employee / Onboarding List
+
+HR opens the application and sees the employees/onboarding requests.
+
+It can show:
+
+Employee name
+Employee number
+Department
+Joining date
+Onboarding status
+
+2. Onboarding Request Details
+
+When HR/Manager selects a request, they can see:
+
+Employee details
+Request date
+Request status
+Manager remarks
+
+For a manager, this screen has:
+
+Approve | Reject
+
+3. Asset Management
+
+This is mainly for IT.
+
+IT can see the asset master/list:
+
+Asset code
+Asset name
+Category
+Availability status
+
+For example:
+
+Laptop — LAP001 — AVAILABLE
+
+4. Asset Allocation
+
+IT selects the employee and available asset and performs the allocation.
+
+For example:
+
+Employee: Rahul
+Asset: LAP001
+Allocation Date: 10-Jun-2025
+Status: ALLOCATED
+
+After allocation, the asset status changes:
+
+AVAILABLE → ALLOCATED
+
+```
+
+**After you complete the assigned modules,What did you work on next?**
+
+`Next flow`
+
+>Module development → Testing → Bug fixing → Code review → Deployment → Production support.
+
 

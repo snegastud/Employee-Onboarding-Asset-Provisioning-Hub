@@ -425,4 +425,40 @@ AVAILABLE → ALLOCATED
 
 >Module development → Testing → Bug fixing → Code review → Deployment → Production support.
 
+**“Once you implemented the modules, what was your next task?”**
+
+>“Once I completed the assigned functionality, I moved to testing. I tested the different business scenarios, including the onboarding request, approval flow, asset availability and asset allocation. During testing, if I found any issues, I fixed them and retested the functionality. After that, I raised the changes for code review and then supported the deployment activities.”
+
+**“What kind of testing did you do?”**
+
+>“I mainly tested the APIs and the Fiori application. For the CAP services, I checked the CRUD operations, validations and custom actions. From the UI side, I tested the complete user flow, for example creating an onboarding request, approving it, allocating an available asset and verifying the status changes.”
+
+**“What happened after testing?”**
+
+>“After testing was completed, I shared the changes with my team lead for review. Based on the review comments, I made the required changes. Once everything was approved, we moved the What happened after code review?”changes through the deployment process.”
+
+**What happened after code review?”**
+
+>“After the code review, if there were any comments, I addressed them and pushed the updated changes. Once the reviewer approved the pull request, the changes were merged into the appropriate branch. Then the CI/CD pipeline was triggered to build and deploy the application to the test or QA environment. After deployment, we performed another round of testing and supported the QA team in resolving any issues.”
+
+
+**“Did you deploy directly to production?”**
+
+>“No, we normally didn't move changes directly to production. First, the changes went to the test or QA environment. After successful testing and business validation, the changes were promoted to the production environment through the deployment process.”
+
+**“What kind of logs did you analyze?”**
+
+>“Mostly, I checked the application logs when there was an issue in the CAP backend. For example, if an API was failing or a business action was not working as expected, I checked the application logs to identify the error, such as validation errors, database errors, authorization issues, or exceptions from the service handler.”
+
+`The types of logs you can mention`
+
+
+| Log type                    | What you check                                             |
+| --------------------------- | ---------------------------------------------------------- |
+| **Application logs**        | CAP Node.js errors, exceptions, business logic failures    |
+| **Request/API logs**        | API request, response, HTTP status such as 400/401/403/500 |
+| **Database-related errors** | SQL/HANA errors, failed queries, constraint issues         |
+| **Authorization errors**    | 401/403, missing scopes/roles                              |
+| **UI/browser console**      | Fiori/UI5 JavaScript or OData errors                       |
+
 
